@@ -61,10 +61,10 @@ namespace OOP
             cost = 100;
         }
 
-        public Pen(string penColor, int penCcost)
+        public Pen(string penColor, int penCost)
         {
             color = penColor;
-            cost = penCcost;
+            cost = penCost;
         }
     }
 
@@ -97,6 +97,23 @@ namespace OOP
         }
     }
 
+    class Bus
+    {
+        public int? Load = 10;
+
+        public void PrintStatus()
+        {
+            if (Load.HasValue)
+            {
+                Console.WriteLine("В авбтобусе {0} пассажиров", Load.Value);
+            }
+            else
+            {
+                Console.WriteLine("Автобус пуст!");
+            }
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
@@ -113,14 +130,23 @@ namespace OOP
             Animal animal = new Animal { type = "Собака", name = "Вольт", age = 4 };
             animal.Info();
 
+            Pen pen1 = new Pen();
+            Console.WriteLine("Ручка, цвет \"{0}\", цена {1}", pen1.color, pen1.cost);
+
+            Pen pen2 = new Pen("Blue", 200);
+            Console.WriteLine("Ручка, цвет \"{0}\", цена {1}", pen2.color, pen2.cost);
+
             Rectangle rectangle1 = new Rectangle();
             Console.WriteLine(rectangle1.Square());
 
             Rectangle rectangle2 = new Rectangle(5);
             Console.WriteLine(rectangle2.Square());
 
-            Rectangle rectangle3 = new Rectangle(7, 3);
+            Rectangle rectangle3 = new Rectangle(9, 3);
             Console.WriteLine(rectangle3.Square());
+
+            Bus bus = new Bus();
+            bus.PrintStatus();
 
             Console.ReadKey(true);
         }
