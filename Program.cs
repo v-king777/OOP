@@ -99,18 +99,42 @@ namespace OOP
 
     class Bus
     {
-        public int? Load = 10;
+        public int? Load;
 
         public void PrintStatus()
         {
             if (Load.HasValue)
             {
-                Console.WriteLine("В авбтобусе {0} пассажиров", Load.Value);
+                Console.WriteLine("В автобусе {0} пассажиров", Load.Value);
             }
             else
             {
                 Console.WriteLine("Автобус пуст!");
             }
+        }
+    }
+
+    class Car
+    {
+        public double Fuel;
+        public int Mileage;
+
+        public Car()
+        {
+            Fuel = 50;
+            Mileage = 0;
+        }
+
+        public void Move()
+        {
+            // Move a kilometer
+            Mileage++;
+            Fuel -= 0.1;
+        }
+
+        public void FillTheCar()
+        {
+            Fuel = 50;
         }
     }
 
@@ -146,7 +170,15 @@ namespace OOP
             Console.WriteLine(rectangle3.Square());
 
             Bus bus = new Bus();
+            bus.Load = 10;
             bus.PrintStatus();
+
+            Car car = new Car();
+            while (car.Fuel > 0)
+            {
+               car.Move();
+            }
+            Console.WriteLine("Машина проехала {0} км", car.Mileage);
 
             Console.ReadKey(true);
         }
