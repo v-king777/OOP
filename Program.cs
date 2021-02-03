@@ -138,6 +138,73 @@ namespace OOP
         }
     }
 
+    class TrafficLight
+    {
+        private string color;
+
+        public string Color
+        {
+            set
+            {
+                color = value;
+            }
+
+            get
+            {
+                return color;
+            }
+        }
+    }
+
+    class User
+    {
+        public int Age { private get; set; }
+
+        private string login;
+
+        public string Login
+        {
+            get
+            {
+                return login;
+            }
+
+            set
+            {
+                if (value.Length < 3)
+                {
+                    Console.WriteLine("Логин должен быть длиной от 3 символов");
+                }
+                else
+                {
+                    login = value;
+                }
+            }
+        }
+
+        private string email;
+
+        public string Email
+        {
+            get
+            {
+                return email;
+            }
+
+            set
+            {
+                if (!value.Contains('@'))
+                {
+                    Console.WriteLine("Неверный формат адреса электронной почты");
+                }
+                else
+                {
+                    email = value;
+                }
+            }
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
@@ -176,9 +243,21 @@ namespace OOP
             Car car = new Car();
             while (car.Fuel > 0)
             {
-               car.Move();
+                car.Move();
             }
             Console.WriteLine("Машина проехала {0} км", car.Mileage);
+
+            TrafficLight trafficLight = new TrafficLight();
+            trafficLight.Color = "зелёный";
+            Console.WriteLine("Сигнал светофора {0}", trafficLight.Color);
+
+            User user = new User();
+            user.Age = 37;
+            user.Login = "v-king777";
+            user.Email = "v.kolpashchikov@gmail.com";
+            //Console.WriteLine("Ваш возраст: {0}", user.Age);
+            Console.WriteLine("Ваш логин: {0}", user.Login);
+            Console.WriteLine("Ваш email: {0}", user.Email);
 
             Console.ReadKey(true);
         }
