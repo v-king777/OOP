@@ -4,28 +4,41 @@ class Program
 {
     static void Main(string[] args)
     {
-        InheritedClass inherited = new InheritedClass(200);
+        BaseClass baseClass = new BaseClass();
+        DerivedClass derivedClass = new DerivedClass();
+
+        baseClass.Counter = -1;
+        Console.WriteLine(baseClass.Counter);
+
+        derivedClass.Counter = 1;
+        Console.WriteLine(derivedClass.Counter);
     }
 }
 
 class BaseClass
 {
-    public string Name;
-    protected string Description;
-    private int value;
-
-    public BaseClass(int value)
+    public virtual int Counter
     {
-        this.value = value;
+        get;
+        set;
     }
 }
 
-class InheritedClass : BaseClass
+class DerivedClass : BaseClass
 {
-    private int newValue;
-
-    public InheritedClass(int newValue) : base(100)
+    private int counter;
+    public override int Counter
     {
-        this.newValue = newValue;
+        get
+        {
+            return counter;
+        }
+        set
+        {
+            if (value >= 0)
+            {
+                counter = value;
+            }
+        }
     }
 }
