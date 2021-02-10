@@ -4,41 +4,24 @@ class Program
 {
     static void Main(string[] args)
     {
-        BaseClass baseClass = new BaseClass();
         DerivedClass derivedClass = new DerivedClass();
-
-        baseClass.Counter = -1;
-        Console.WriteLine(baseClass.Counter);
-
-        derivedClass.Counter = 1;
-        Console.WriteLine(derivedClass.Counter);
+        derivedClass.Display();
     }
 }
 
 class BaseClass
 {
-    public virtual int Counter
+    public virtual void Display()
     {
-        get;
-        set;
+        Console.WriteLine("Метод класса BaseClass");
     }
 }
 
 class DerivedClass : BaseClass
 {
-    private int counter;
-    public override int Counter
+    public override void Display()
     {
-        get
-        {
-            return counter;
-        }
-        set
-        {
-            if (value >= 0)
-            {
-                counter = value;
-            }
-        }
+        base.Display();
+        Console.WriteLine("Метод класса DerivedClass");
     }
 }
